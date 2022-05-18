@@ -1,0 +1,833 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>个人项目--WhiteJotter-Lv(基于SpringBoot+Vue实现的前后端分离项目) | Levi_Bee's World!</title><meta name="keywords" content="Vue,SpringBoot,JPA,ElementUI,MySQL,Shiro"><meta name="author" content="Levi_Bee"><meta name="copyright" content="Levi_Bee"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="项目开发流程2022.02.23 今天是White-Jotter-Lv项目开发第一天，主要工作是部署好基本环境和搭建一个Vue空项目 Vue项目构建       基本环境设置     &#x3D;&#x3D;遇到的问题&#x3D;&#x3D;    问题： 主要是&#x3D;&#x3D;eslint&#x3D;&#x3D;是一个语法检查工具，但是限制很严格，在我的vue文件里面很多空格都会导致红线警告(可以屏蔽)，虽然可以屏蔽，但是在编译的时候老是会跳出来一堆警告出来，所以能">
+<meta property="og:type" content="article">
+<meta property="og:title" content="个人项目--WhiteJotter-Lv(基于SpringBoot+Vue实现的前后端分离项目)">
+<meta property="og:url" content="http://example.com/2022/05/18/%E4%B8%AA%E4%BA%BA%E9%A1%B9%E7%9B%AE/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB/White-Jotter-Lv/index.html">
+<meta property="og:site_name" content="Levi_Bee&#39;s World!">
+<meta property="og:description" content="项目开发流程2022.02.23 今天是White-Jotter-Lv项目开发第一天，主要工作是部署好基本环境和搭建一个Vue空项目 Vue项目构建       基本环境设置     &#x3D;&#x3D;遇到的问题&#x3D;&#x3D;    问题： 主要是&#x3D;&#x3D;eslint&#x3D;&#x3D;是一个语法检查工具，但是限制很严格，在我的vue文件里面很多空格都会导致红线警告(可以屏蔽)，虽然可以屏蔽，但是在编译的时候老是会跳出来一堆警告出来，所以能">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/hellolvweibin/Typora/main/image-20220518153233950.png">
+<meta property="article:published_time" content="2022-05-18T12:16:39.000Z">
+<meta property="article:modified_time" content="2022-05-18T07:32:49.938Z">
+<meta property="article:author" content="Levi_Bee">
+<meta property="article:tag" content="Vue">
+<meta property="article:tag" content="SpringBoot">
+<meta property="article:tag" content="JPA">
+<meta property="article:tag" content="ElementUI">
+<meta property="article:tag" content="MySQL">
+<meta property="article:tag" content="Shiro">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/hellolvweibin/Typora/main/image-20220518153233950.png"><link rel="shortcut icon" href="/img/logo.png"><link rel="canonical" href="http://example.com/2022/05/18/%E4%B8%AA%E4%BA%BA%E9%A1%B9%E7%9B%AE/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB/White-Jotter-Lv/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#121212","position":"top-right"},
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '个人项目--WhiteJotter-Lv(基于SpringBoot+Vue实现的前后端分离项目)',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-05-18 15:32:49'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/mycss.css"><link rel="stylesheet" href="/css/background.css"><meta name="generator" content="Hexo 5.4.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://raw.githubusercontent.com/hellolvweibin/Typora/main/IMG_5475.JPG" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">9</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">16</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/upadte/"><i class="fa-fw fa fa-bell"></i><span> 日志</span></a></div><div class="menus_item"><a class="site-page" href="/loving/"><i class="fa-fw fas fa-heart"></i><span> Love</span></a></div><div class="menus_item"><a class="site-page" href="/myself/"><i class="fa-fw fa fa-id-card"></i><span> Myself</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://raw.githubusercontent.com/hellolvweibin/Typora/main/image-20220518153233950.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Levi_Bee's World!</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/upadte/"><i class="fa-fw fa fa-bell"></i><span> 日志</span></a></div><div class="menus_item"><a class="site-page" href="/loving/"><i class="fa-fw fas fa-heart"></i><span> Love</span></a></div><div class="menus_item"><a class="site-page" href="/myself/"><i class="fa-fw fa fa-id-card"></i><span> Myself</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">个人项目--WhiteJotter-Lv(基于SpringBoot+Vue实现的前后端分离项目)</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-05-18T12:16:39.000Z" title="发表于 2022-05-18 20:16:39">2022-05-18</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-05-18T07:32:49.938Z" title="更新于 2022-05-18 15:32:49">2022-05-18</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E4%B8%AA%E4%BA%BA%E9%A1%B9%E7%9B%AE/">个人项目</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E4%B8%AA%E4%BA%BA%E9%A1%B9%E7%9B%AE/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB/">前后端分离</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">6.7k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>25分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="个人项目--WhiteJotter-Lv(基于SpringBoot+Vue实现的前后端分离项目)"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="项目开发流程"><a href="#项目开发流程" class="headerlink" title="项目开发流程"></a>项目开发流程</h1><h4 id="2022-02-23"><a href="#2022-02-23" class="headerlink" title="2022.02.23"></a>2022.02.23</h4><ul>
+<li>今天是White-Jotter-Lv项目开发第一天，主要工作是部署好基本环境和搭建一个Vue空项目</li>
+<li>Vue项目构建</li>
+</ul>
+<img src="https://raw.githubusercontent.com/hellolvweibin/Typora/main/截屏2022-02-23 下午7.25.31.png" alt="截屏2022-02-23 下午7.25.31" style="zoom:50%;" />
+
+<img src="https://raw.githubusercontent.com/hellolvweibin/Typora/main/%E6%88%AA%E5%B1%8F2022-02-23%20%E4%B8%8B%E5%8D%887.25.48.png" alt="截屏2022-02-23 下午7.25.48" style="zoom:50%;" />
+
+<ul>
+<li>基本环境设置</li>
+</ul>
+<img src="https://raw.githubusercontent.com/hellolvweibin/Typora/main/%E6%88%AA%E5%B1%8F2022-02-23%20%E4%B8%8B%E5%8D%887.26.54.png" alt="截屏2022-02-23 下午7.26.54" style="zoom:50%;" />
+
+<ul>
+<li>==遇到的问题==</li>
+</ul>
+<img src="https://raw.githubusercontent.com/hellolvweibin/Typora/main/%E6%88%AA%E5%B1%8F2022-02-23%20%E4%B8%8B%E5%8D%888.19.00.png" alt="截屏2022-02-23 下午8.19.00" style="zoom:50%;" />
+
+<p><strong>问题：</strong></p>
+<p>主要是==eslint==是一个语法检查工具，但是限制很严格，在我的vue文件里面很多空格都会导致红线警告(可以屏蔽)，虽然可以屏蔽，但是在编译的时候老是会跳出来一堆警告出来，所以能完全关闭语法的限制是最好的了。</p>
+<blockquote>
+<p>解决方法</p>
+</blockquote>
+<p>==关闭方法：==</p>
+<p>==在build/webpack.base.conf.js文件中，注释或者删除掉：module-&gt;rules中有关eslint的规则==</p>
+<p>![截屏2022-02-23 下午8.22.58](<a target="_blank" rel="noopener" href="https://raw.githubusercontent.com/hellolvweibin/Typora/main/%E6%88%AA%E5%B1%8F2022-02-23">https://raw.githubusercontent.com/hellolvweibin/Typora/main/截屏2022-02-23</a> 下午8.22.58.png)</p>
+<p>解决了。。。。</p>
+<p><img src="https://raw.githubusercontent.com/hellolvweibin/Typora/main/%E6%88%AA%E5%B1%8F2022-02-23%20%E4%B8%8B%E5%8D%888.23.08.png" alt="截屏2022-02-23 下午8.23.08"></p>
+<p><img src="https://raw.githubusercontent.com/hellolvweibin/Typora/main/%E6%88%AA%E5%B1%8F2022-02-23%20%E4%B8%8B%E5%8D%888.24.34.png" alt="截屏2022-02-23 下午8.24.34"></p>
+<p>注意地址是 <code>localhost:8088/#/login</code> ，中间有这个 <code>#</code> 是因为 Vue 的路由使用了 Hash 模式，是单页面应用的经典用法</p>
+<h4 id="2022-02-24"><a href="#2022-02-24" class="headerlink" title="2022.02.24"></a>2022.02.24</h4><p><img src="https://raw.githubusercontent.com/hellolvweibin/Typora/main/%E6%88%AA%E5%B1%8F2022-02-24%20%E4%B8%8B%E5%8D%883.31.30.png" alt="截屏2022-02-24 下午3.31.30"></p>
+<blockquote>
+<p>测试这个项目的时候报错，点击登录没有反应，排查一下发现是后端springboot没有运行，我服了。。。。。</p>
+</blockquote>
+<p>![截屏2022-02-24 下午3.31.51](White-Jotter-Lv.assets/截屏2022-02-24 下午3.31.51.png)</p>
+<blockquote>
+<p>解决</p>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/hellolvweibin/Typora/main/%E6%88%AA%E5%B1%8F2022-02-24%20%E4%B8%8B%E5%8D%883.33.05.png" alt="截屏2022-02-24 下午3.33.05"></p>
+<p> ==@JsonIgnoreProperties({ “handler”,“hibernateLazyInitializer” })==，解释起来比较复杂，下面的话看不懂可以忽略：</p>
+<blockquote>
+<p>因为是做前后端分离，而前后端数据交互用的是 json 格式。 那么 User 对象就会被转换为 json 数据。 而本项目使用 jpa 来做实体类的持久化，jpa 默认会使用 hibernate, 在 jpa 工作过程中，就会创造代理类来继承 User ，并添加 handler 和 hibernateLazyInitializer 这两个无须 json 化的属性，所以这里需要用 JsonIgnoreProperties 把这两个属性忽略掉。</p>
+</blockquote>
+<ul>
+<li>DAO 用于与数据库的直接交互，定义增删改查等操作</li>
+<li>Service 负责业务逻辑，跟功能相关的代码一般写在这里，编写、调用各种方法对 DAO 取得的数据进行操作</li>
+<li>Controller 负责数据交互，即接收前端发送的数据，通过调用 Service 获得处理后的数据并返回</li>
+</ul>
+<p>==报错==</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Error starting ApplicationContext. To display the conditions report re-run your application with <span class="string">&#x27;debug&#x27;</span> enabled.</span><br><span class="line"><span class="number">2022</span>-<span class="number">02</span>-<span class="number">24</span> <span class="number">16</span>:<span class="number">34</span>:<span class="number">16.110</span> ERROR <span class="number">73967</span> --- [  restartedMain] o.s.boot.SpringApplication               : Application run failed</span><br><span class="line"></span><br><span class="line">org.springframework.context.ApplicationContextException: Unable to start web server; nested exception is org.springframework.boot.web.server.WebServerException: Unable to start embedded Tomcat</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>解决方式</p>
+<ul>
+<li>因为在sprngboot中已经集成了tomcat，所以在pom.xml不要以下依赖，注释掉即可</li>
+</ul>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/hellolvweibin/Typora/main/%E6%88%AA%E5%B1%8F2022-02-24%20%E4%B8%8B%E5%8D%884.36.31.png" alt="截屏2022-02-24 下午4.36.31"></p>
+<ul>
+<li>使用element-ui报错</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//导入element-ui</span></span><br><span class="line"><span class="comment">// import ElementUI from &#x27;element-ui&#x27;</span></span><br><span class="line"><span class="comment">// import &#x27;element-ui/lib/theme-chalk/index.css&#x27;</span></span><br><span class="line"><span class="comment">// Vue.use(ElementUI)</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/hellolvweibin/Typora/main/%E6%88%AA%E5%B1%8F2022-02-24%20%E4%B8%8B%E5%8D%884.53.04.png" alt="截屏2022-02-24 下午4.53.04"></p>
+<blockquote>
+<p>解决方法</p>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/hellolvweibin/Typora/main/%E6%88%AA%E5%B1%8F2022-02-24%20%E4%B8%8B%E5%8D%885.05.08.png" alt="截屏2022-02-24 下午5.05.08"></p>
+<img src="White-Jotter-Lv.assets/截屏2022-02-24 下午5.05.21.png" alt="截屏2022-02-24 下午5.05.21" style="zoom:50%;" />
+
+
+
+<h4 id="2022-02-25"><a href="#2022-02-25" class="headerlink" title="2022.02.25"></a>2022.02.25</h4><p><img src="https://raw.githubusercontent.com/hellolvweibin/Typora/main/%E6%88%AA%E5%B1%8F2022-02-25%20%E4%B8%8B%E5%8D%883.12.17.png" alt="截屏2022-02-25 下午3.12.17"></p>
+<p>登录的基本页面初稿出来了</p>
+<ul>
+<li>学习了为什么路由上面有个==#==符号</li>
+</ul>
+<p><code>#</code> 被称为“锚点”，利用 AJAX，我们可以不重载页面就刷新数据，如果再加上 <code>#</code> 号的特性（即改变 URL 却不请求后端），我们就可以在前端实现页面的整体变化，而不用每次都去请求后端。为了实现前端路由，我们可以监听 <code>#</code> 号后面内容的变化（<code>hashChange</code>），从而动态改变页面内容。URL 的 <code>#</code> 号==后面==的地址被称为 <code>hash</code> 。</p>
+<blockquote>
+<p>要去掉的话，修改 <code>router\index.js</code>，加入 <code>mode: &#39;history&#39;</code> 就行</p>
+</blockquote>
+<blockquote>
+<p>执行下面的做法，发现还是不能够访问localhost:8843/login,发现==少写了一个注解@Component==</p>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/hellolvweibin/Typora/main/%E6%88%AA%E5%B1%8F2022-02-25%20%E4%B8%8B%E5%8D%883.54.27.png" alt="截屏2022-02-25 下午3.54.27"></p>
+<p><img src="https://raw.githubusercontent.com/hellolvweibin/Typora/main/%E6%88%AA%E5%B1%8F2022-02-25%20%E4%B8%8B%E5%8D%883.54.08.png" alt="截屏2022-02-25 下午3.54.08"></p>
+<blockquote>
+<p>解决了</p>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/hellolvweibin/Typora/main/%E6%88%AA%E5%B1%8F2022-02-25%20%E4%B8%8B%E5%8D%883.56.25.png" alt="截屏2022-02-25 下午3.56.25"></p>
+<p>总结一下</p>
+<blockquote>
+<p>1、@controller 控制器（注入服务）<br>用于标注控制层，相当于struts中的action层</p>
+<p>2、@service 服务（注入dao）<br>用于标注服务层，主要用来进行业务的逻辑处理</p>
+<p>3、@repository（实现dao访问）<br>用于标注数据访问层，也可以说用于标注数据访问组件，即DAO组件.</p>
+<p>4、@component （把普通pojo实例化到spring容器中，相当于配置文件中的<br><bean id="" class=""/>）<br>泛指各种组件，就是说当我们的类不属于各种归类的时候（不属于@Controller、@Services等的时候），我们就可以使用@Component来标注这个类</p>
+<ol start="5">
+<li>@RequestBody @<em>RequestBody</em>用于读取Http请求的body部分数据——就是我们的请求数据</li>
+</ol>
+</blockquote>
+<ul>
+<li>后端拦截器</li>
+</ul>
+<blockquote>
+<p>报错说没有这个方法</p>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/hellolvweibin/Typora/main/%E6%88%AA%E5%B1%8F2022-02-25%20%E4%B8%8B%E5%8D%884.17.23.png" alt="截屏2022-02-25 下午4.17.23"></p>
+<blockquote>
+<p>我的解决方式</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addInterceptors</span><span class="params">(InterceptorRegistry registry)</span> </span>&#123;</span><br><span class="line">    registry.addInterceptor(<span class="keyword">new</span> LoginInterceptor()).addPathPatterns(<span class="string">&quot;/**&quot;</span>).excludePathPatterns(<span class="string">&quot;/index.html&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这里直接new 一个登录拦截器即可</p>
+</blockquote>
+<p>![截屏2022-02-25 下午4.26.15](White-Jotter-Lv.assets/截屏2022-02-25 下午4.26.15.png)</p>
+<blockquote>
+<p>运行结果成功</p>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/hellolvweibin/Typora/main/%E6%88%AA%E5%B1%8F2022-02-25%20%E4%B8%8B%E5%8D%884.26.28.png" alt="截屏2022-02-25 下午4.26.28"></p>
+<ul>
+<li>总结</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/hellolvweibin/Typora/main/%E6%88%AA%E5%B1%8F2022-02-25%20%E4%B8%8B%E5%8D%884.20.14.png" alt="截屏2022-02-25 下午4.20.14"></p>
+<p><strong>Vuex</strong></p>
+<blockquote>
+<p>专门为 Vue 开发的状态管理方案，我们可以把需要在各个组件中传递使用的变量、方法定义在这里</p>
+</blockquote>
+<ul>
+<li>教程</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/hellolvweibin/Typora/main/%E6%88%AA%E5%B1%8F2022-02-25%20%E4%B8%8B%E5%8D%885.04.14.png" alt="截屏2022-02-25 下午5.04.14"></p>
+<ul>
+<li>我的</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/hellolvweibin/Typora/main/%E6%88%AA%E5%B1%8F2022-02-25%20%E4%B8%8B%E5%8D%885.06.14.png" alt="截屏2022-02-25 下午5.06.14"></p>
+<blockquote>
+<p>输入账号密码后登录，成功跳转到 <a target="_blank" rel="noopener" href="http://localhost:8080/index">http://localhost:8080/index</a> ，之后再次访问则无需登录（除非清除缓存）</p>
+</blockquote>
+<ul>
+<li>可以看到有缓存</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/hellolvweibin/Typora/main/%E6%88%AA%E5%B1%8F2022-02-25%20%E4%B8%8B%E5%8D%885.06.37.png" alt="截屏2022-02-25 下午5.06.37"></p>
+<ol>
+<li><code>el-tooltip</code> Element 提供的组件，用于展示鼠标悬停时的提示信息。参考 <a target="_blank" rel="noopener" href="https://element.eleme.cn/2.0/#/zh-CN/component/tooltip">https://element.eleme.cn/2.0/#/zh-CN/component/tooltip</a></li>
+<li><code>slot</code> 插槽，及把标签中的内容插到父组件指定的地方</li>
+<li>分页使用 <code>el-pagination</code> 组件</li>
+</ol>
+<blockquote>
+<p>实现图书展示，然后封面图像标签鼠标悬停能够展示出标签信息</p>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/hellolvweibin/Typora/main/%E6%88%AA%E5%B1%8F2022-02-25%20%E4%B8%8B%E5%8D%888.18.04.png" alt="截屏2022-02-25 下午8.18.04"></p>
+<blockquote>
+<p>出现报错，但不影响使用，可以删除 @select=”handleSelect”方法，或者自己定义</p>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/hellolvweibin/Typora/main/%E6%88%AA%E5%B1%8F2022-02-25%20%E4%B8%8B%E5%8D%888.24.23.png" alt="截屏2022-02-25 下午8.24.23"></p>
+<p><img src="https://raw.githubusercontent.com/hellolvweibin/Typora/main/%E6%88%AA%E5%B1%8F2022-02-25%20%E4%B8%8B%E5%8D%888.25.16.png" alt="截屏2022-02-25 下午8.25.16"></p>
+<blockquote>
+<p>解决了</p>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/hellolvweibin/Typora/main/%E6%88%AA%E5%B1%8F2022-02-25%20%E4%B8%8B%E5%8D%888.26.07.png" alt="截屏2022-02-25 下午8.26.07"></p>
+<blockquote>
+<p>问题：直接输入<a target="_blank" rel="noopener" href="http://localhost:8088/library%EF%BC%8C%E4%BC%9A%E5%87%BA%E7%8E%B0%E5%AF%BC%E8%88%AA%E6%A0%8F%E5%9C%A8%E9%A6%96%E9%A1%B5%E7%9A%84%E6%83%85%E5%86%B5">http://localhost:8088/library，会出现导航栏在首页的情况</a></p>
+</blockquote>
+<img src="https://raw.githubusercontent.com/hellolvweibin/Typora/main/%E6%88%AA%E5%B1%8F2022-02-25%20%E4%B8%8B%E5%8D%888.28.48.png" alt="截屏2022-02-25 下午8.28.48" style="zoom:50%;" />
+
+<blockquote>
+<p>解决方案</p>
+</blockquote>
+<p>更改NavMenu中的:default-active中的默认值。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">:default-active=&quot;$route.path&quot;</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://raw.githubusercontent.com/hellolvweibin/Typora/main/%E6%88%AA%E5%B1%8F2022-02-25%20%E4%B8%8B%E5%8D%888.30.24.png" alt="截屏2022-02-25 下午8.30.24"></p>
+<p>上面👆是没有改之前</p>
+<blockquote>
+<p>解决啦！！！</p>
+</blockquote>
+<img src="https://raw.githubusercontent.com/hellolvweibin/Typora/main/%E6%88%AA%E5%B1%8F2022-02-25%20%E4%B8%8B%E5%8D%888.31.14.png" alt="截屏2022-02-25 下午8.31.14" style="zoom:50%;" />
+
+<h4 id="2022-02-26"><a href="#2022-02-26" class="headerlink" title="2022.02.26"></a>2022.02.26</h4><p>今天要考六级，应该没啥时间写了。。。。</p>
+<p>今天就完成一些==增删改查==</p>
+<blockquote>
+<p>问题1:这个在SpringBoot2.2.x以上就不能用了，可以用==Sort.by==</p>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/hellolvweibin/Typora/main/%E6%88%AA%E5%B1%8F2022-02-26%20%E4%B8%8B%E5%8D%881.48.40.png" alt="截屏2022-02-26 下午1.48.40"></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> List&lt;Book&gt; <span class="title">list</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Sort sort = Sort.by(Sort.Direction.DESC, <span class="string">&quot;id&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> bookDao.findAll(sort);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>问题2:下面方法写报错400</p>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/hellolvweibin/Typora/main/%E6%88%AA%E5%B1%8F2022-02-26%20%E4%B8%8B%E5%8D%882.10.54.png" alt="截屏2022-02-26 下午2.10.54"></p>
+<p><img src="https://raw.githubusercontent.com/hellolvweibin/Typora/main/%E6%88%AA%E5%B1%8F2022-02-26%20%E4%B8%8B%E5%8D%882.11.20.png" alt="截屏2022-02-26 下午2.11.20"></p>
+<blockquote>
+<p>但这样写却能实现，访问<a target="_blank" rel="noopener" href="http://localhost:8443/login%E6%88%90%E5%8A%9F%EF%BC%8C%E4%BD%86%E6%98%AF%E8%AE%BF%E9%97%AEhttp://localhost:8443/api/login%E5%A4%B1%E8%B4%A5">http://localhost:8443/login成功，但是访问http://localhost:8443/api/login失败</a></p>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/hellolvweibin/Typora/main/%E6%88%AA%E5%B1%8F2022-02-26%20%E4%B8%8B%E5%8D%882.16.48.png" alt="截屏2022-02-26 下午2.16.48"></p>
+<h4 id="2022-02-27"><a href="#2022-02-27" class="headerlink" title="2022.02.27"></a>2022.02.27</h4><p>昨天出去玩了，那个问题还是没能解决，今天再看看。。。。【先放着吧。。。】</p>
+<p>![截屏2022-02-27 下午2.53.37](White-Jotter-Lv.assets/截屏2022-02-27 下午2.53.37.png)</p>
+<blockquote>
+<p><strong>知识点1</strong></p>
+<ul>
+<li>vm.$emit( event, arg ) //触发父组件上定义的事件</li>
+</ul>
+</blockquote>
+<blockquote>
+<p><strong>问题一</strong> </p>
+<ul>
+<li> No ‘Access-Control-Allow-Origin’ header is present on the requested resource.</li>
+</ul>
+<p>是跨域问题，需要在配置中</p>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/hellolvweibin/Typora/main/%E6%88%AA%E5%B1%8F2022-02-27%20%E4%B8%8B%E5%8D%883.23.46.png" alt="截屏2022-02-27 下午3.23.46"></p>
+<blockquote>
+<p>解决方法</p>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/hellolvweibin/Typora/main/%E6%88%AA%E5%B1%8F2022-02-27%20%E4%B8%8B%E5%8D%883.25.44.png" alt="截屏2022-02-27 下午3.25.44"></p>
+<blockquote>
+<p>可以实现添加图书了</p>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/hellolvweibin/Typora/main/%E6%88%AA%E5%B1%8F2022-02-27%20%E4%B8%8B%E5%8D%885.11.31.png" alt="截屏2022-02-27 下午5.11.31"></p>
+<blockquote>
+<p>能够完成基本的添加修改操作</p>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/hellolvweibin/Typora/main/%E6%88%AA%E5%B1%8F2022-02-27%20%E4%B8%8B%E5%8D%886.53.55.png" alt="截屏2022-02-27 下午6.53.55"></p>
+<p>==钩子函数==</p>
+<ul>
+<li><p>钩子函数<code>mounted</code>，就是在某个特定条件下被触发的函数</p>
+</li>
+<li><p>在项目中的应用在于打开页面就能加载所有的图书，即自动触发相应代码发送请求渲染页面</p>
+</li>
+<li><p><strong>mounted</strong> 即 <strong>“已挂载”</strong> ，所谓挂载，就是我们写的 Vue 代码被转换为 HTML 并替换相应的 DOM 这个过程，这个过程完事儿的时候，就会执行 mounted 里面的代码</p>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">mounted: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">this</span>.loadBooks()</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<p>总结一下，当你通过点击选择侧边导航栏的一个标签后，发生了如下的动人的故事：</p>
+<ul>
+<li>触发 <code>&lt;el-menu&gt;</code> 组件的<code> @select</code> 事件，执行 <code>handleSelect</code> 方法</li>
+<li>handleSelect 方法触发 indexSelect 事件，并把 key，即 <el-menu-item> 标签的 index 属性的值赋给 data 中定义的属性，即分类码。</li>
+<li>父组件收到指令，执行事件对应的方法，即 listByCategory 方法</li>
+<li>发送请求，后端执行查询代码，返回数据，再通过 refs 修改 Books组件的 data 以动态渲染页面。</li>
+</ul>
+<blockquote>
+<p>知识点2</p>
+</blockquote>
+<p>Element 的 dialog 组件 <code>&lt;el-dialog&gt;</code>。我们通过该组件的 :visble.sync 属性控制它的显示，默认是隐藏的，当点击加号时才会显示。</p>
+<ul>
+<li>可以用来内嵌表单，点击的时候才会跳出</li>
+</ul>
+<blockquote>
+<p>知识点3</p>
+</blockquote>
+<ul>
+<li>post 不能像 get 请求那样直接把参数写在 url 里，而需要以==键值对==的方式传递。</li>
+</ul>
+<blockquote>
+<p>遇到的问题：搜索不出结果</p>
+</blockquote>
+<img src="https://raw.githubusercontent.com/hellolvweibin/Typora/main/%E6%88%AA%E5%B1%8F2022-02-27%20%E4%B8%8B%E5%8D%887.46.25.png" alt="截屏2022-02-27 下午7.46.25" style="zoom: 67%;" />
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="number">2022</span>-<span class="number">02</span>-<span class="number">27</span> <span class="number">19</span>:<span class="number">53</span>:<span class="number">51.037</span>  WARN <span class="number">29482</span> --- [nio-<span class="number">8443</span>-exec-<span class="number">1</span>] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method <span class="string">&#x27;GET&#x27;</span> not supported]</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>我傻了，搜索时获得搜索结果，我弄成了<code>post</code>改了之后就能查询结果了</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/hellolvweibin/Typora/main/%E6%88%AA%E5%B1%8F2022-02-27%20%E4%B8%8B%E5%8D%887.55.11.png" alt="截屏2022-02-27 下午7.55.11"></p>
+<p><img src="https://raw.githubusercontent.com/hellolvweibin/Typora/main/%E6%88%AA%E5%B1%8F2022-02-27%20%E4%B8%8B%E5%8D%887.56.57.png" alt="截屏2022-02-27 下午7.56.57"></p>
+<h5 id="图片上传"><a href="#图片上传" class="headerlink" title="图片上传"></a>图片上传</h5><figure class="highlight html"><table><tr><td class="code"><pre><span class="line">利用 element 提供的组件 <span class="tag">&lt;<span class="name">el-upload</span>&gt;</span> 可以轻松搞定文件上传</span><br></pre></td></tr></table></figure>
+
+<p><code>重要的属性是 multiple，和 </code>:limit<code> 属性配合使用可以检测上传文件的数量。</code></p>
+<blockquote>
+<p>对于图片上传需要解决两个问题：</p>
+<ul>
+<li><p>如何接收前端传来的图片数据并保存</p>
+</li>
+<li><p>如何避免重名（图片资源的名字很可能重复，如不修改可能出现问题）</p>
+<ul>
+<li><p>方法是通过随机生成字符串的函数给上传的图片重命名</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Random;</span><br><span class="line">                        </span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StringUtils</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">getRandomString</span><span class="params">(<span class="keyword">int</span> length)</span> </span>&#123;</span><br><span class="line">        String base = <span class="string">&quot;abcdefghijklmnopqrstuvwxyz0123456789&quot;</span>;</span><br><span class="line">        Random random = <span class="keyword">new</span> Random();</span><br><span class="line">        StringBuffer sb = <span class="keyword">new</span> StringBuffer();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; length; i++) &#123;</span><br><span class="line">            <span class="keyword">int</span> number = random.nextInt(base.length());</span><br><span class="line">            sb.append(base.charAt(number));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sb.toString();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<hr>
+<p>已经能够实现图片上传了</p>
+<h4 id="2022-02-28"><a href="#2022-02-28" class="headerlink" title="2022.02.28"></a>2022.02.28</h4><blockquote>
+<p>知识点一：如何部署服务器</p>
+</blockquote>
+<p><strong>选择一：</strong> 把前端项目部署在 <strong>web 服务器</strong>中，把后端项目部署在<strong>应用服务器</strong>中</p>
+<p><strong>选择二：</strong> 把前端项目打包，作为后端项目的静态文件，再把后端项目部署在<strong>应用服务器</strong>中</p>
+<p>前后端分离的话自然是选择1</p>
+<p><code>使用Web服务器的好处</code></p>
+<ul>
+<li>可以使用反向代理，提高网站的安全性</li>
+<li>方便维护</li>
+<li>加载静态资源更快</li>
+</ul>
+<hr>
+<p>这边我就先不部署了，嘿嘿。。。。</p>
+<p>![截屏2022-02-28 上午10.42.29](White-Jotter-Lv.assets/截屏2022-02-28 上午10.42.29.png)</p>
+<p><img src="https://raw.githubusercontent.com/hellolvweibin/Typora/main/%E6%88%AA%E5%B1%8F2022-02-28%20%E4%B8%8A%E5%8D%8810.44.19.png" alt="截屏2022-02-28 上午10.44.19"></p>
+<p><strong>1.用户管理</strong></p>
+<ul>
+<li>用户信息： 显示用户的基本信息（昵称、联系方式、角色、部门等）</li>
+<li>组织架构： 显示、配置（增删改）组织架构，一般为树结构</li>
+<li>用户操作： 为用户分配角色（多对多）、组织架构（多对多），删除用户</li>
+<li>用户黑白名单： 对特殊用户进行特别控制</li>
+</ul>
+<p><strong>2.角色管理</strong></p>
+<ul>
+<li>角色信息： 显示角色的基本信息（名称、权限等）</li>
+<li>角色操作： 根据需要增删角色、为角色分配权限（多对多，按不同粒度分配，并实现权限的互斥性检验）</li>
+</ul>
+<p><strong>3.权限管理</strong></p>
+<p>权限一般有如下三种粒度：</p>
+<ul>
+<li>菜单权限： 访问某一菜单（页面、路由）的权限</li>
+<li>操作/功能权限： 进行某一操作或使用某一功能的权限（如删除用户的权限）</li>
+<li>数据权限： 访问某种数据（表、字段）的权限，或对可操作数据量的控制</li>
+</ul>
+<blockquote>
+<p>制定功能权限的思路</p>
+</blockquote>
+<ul>
+<li><p>思路一： 按权限加载组件。即在渲染页面前向后端发送请求，获取有权限使用的组件并动态渲染，并在需要调用后端接口时进行判断，防止用户通过自行构造请求的方式绕过限制</p>
+</li>
+<li><p>思路二： 不管三七二十一前端组件全部加载出来，但需要调用后端接口时进行判断，==如果无权限则弹出相应提示==。这种适合对按钮的控制，图表直接不加载数据就显得不是很友好</p>
+</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/hellolvweibin/Typora/main/%E6%88%AA%E5%B1%8F2022-02-28%20%E4%B8%8A%E5%8D%8811.06.32.png" alt="截屏2022-02-28 上午11.06.32"></p>
+<p><a target="_blank" rel="noopener" href="https://learner.blog.csdn.net/article/details/102690035%E3%80%90%E6%9D%83%E9%99%90%E5%BF%85%E8%AF%BB%E6%88%91%E6%93%A6%EF%BC%81%EF%BC%81%E3%80%91">https://learner.blog.csdn.net/article/details/102690035【权限必读我擦！！】</a></p>
+<p><code>加盐加密</code> ：==本质就是在密码后面加一段随机的字符串，然后再 hash==</p>
+<p>==加盐加密与验证的逻辑：==</p>
+<ul>
+<li>用户注册时，输入用户名密码（明文），向后台发送请求</li>
+<li>后台将密码加上随机生成的盐并 hash，再将 hash 后的值作为密码存入数据库，盐也作为单独的字段存起来</li>
+<li>用户登录时，输入用户名密码（明文），向后台发送请求</li>
+<li>后台根据用户名查询出盐，和密码组合并 hash，==将得到的值与数据库中存储的密码比对，若一致则通过验证==</li>
+</ul>
+<h5 id="Shiro-核心概念"><a href="#Shiro-核心概念" class="headerlink" title="Shiro 核心概念"></a>Shiro 核心概念</h5><p>三个核心概念：<code>Subject</code>、<code>SecurityManager</code> 和<code> Realms</code></p>
+<ul>
+<li><p><strong>Subject：</strong> “现在在与软件交互的东西”，这个东西可能是你是我，可能是第三方进程。说白了就是==穿了马甲的用户类==，负责存储与修改当前用户的信息和状态。</p>
+</li>
+<li><p><strong>SecurityManager：</strong> Subject 背后的女人，==安全相关的操作==实际上是由她管理的。只用在项目中配置一次，就可以忘掉她了。</p>
+</li>
+<li><p><strong>Realm：</strong> 是 Shiro 和安全相关数据（比如用户信息）的==桥梁==，也就是说，Realm 负责从数据源中获取数据并加工后传给 SecurityManager。</p>
+</li>
+</ul>
+<blockquote>
+<p>Authentication（认证）、Authorization（授权）、Session Management（会话管理）、Cryptography（加密）</p>
+</blockquote>
+<blockquote>
+<p>为什么 Shiro 方法里的 salt 要用 byte[] 而不是用 String？</p>
+<ul>
+<li>Shiro 提供的 hash 算法本质上是由 Java 提供的<code>MessageDigest</code>类实现，其输入和输出都是 byte[]，这样设计的目的，我猜主要是考虑到效率与通用性</li>
+</ul>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/hellolvweibin/Typora/main/%E6%88%AA%E5%B1%8F2022-02-28%20%E4%B8%8B%E5%8D%887.21.26.png" alt="截屏2022-02-28 下午7.21.26"></p>
+<ul>
+<li>可以实现用户注册了</li>
+</ul>
+<p>![截屏2022-02-28 下午7.24.50](White-Jotter-Lv.assets/截屏2022-02-28 下午7.24.50.png)</p>
+<blockquote>
+<p>logout核心功能：subject.logout</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">logout</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">this</span>.clearRunAsIdentitiesInternal();</span><br><span class="line">        <span class="keyword">this</span>.securityManager.logout(<span class="keyword">this</span>);</span><br><span class="line">    &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">        <span class="keyword">this</span>.session = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">this</span>.principals = <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">this</span>.authenticated = <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>会清除<code>session</code>,<code>principals</code>,<code>authenticated</code>设置为false</li>
+</ul>
+<blockquote>
+<p> <strong>注意：</strong>登出功能不需要拦截</p>
+</blockquote>
+<h5 id="Session和Token"><a href="#Session和Token" class="headerlink" title="Session和Token"></a>Session和Token</h5><blockquote>
+<h2 id="Session"><a href="#Session" class="headerlink" title="Session"></a>Session</h2></blockquote>
+<p>许多语言在网络编程模块都会实现会话机制，即 session。利用 session，我们可以管理用户状态，比如控制会话存在时间，在会话中保存属性等。</p>
+<p><strong>其作用方式通常如下：</strong></p>
+<ul>
+<li>服务器接收到第一个请求时，生成 session 对象，并通过响应头告诉客户端在 cookie 中放入 sessionId</li>
+<li>客户端之后发送请求时，会带上包含 sessionId 的 cookie</li>
+<li>服务器通过 sessionId 获取 session ，进而得到当前用户的状态（是否登录）等信息</li>
+</ul>
+<p><code>客户端只需要在登录的时候发送一次用户名密码，此后只需要在发送请求时带上 sessionId，服务器就可以验证用户是否登录了。</code></p>
+<blockquote>
+<h3 id="Token-令牌"><a href="#Token-令牌" class="headerlink" title="Token (令牌)"></a>Token (令牌)</h3></blockquote>
+<p><code>一个真正的 token 本身是携带了一些信息的，比如用户 id、过期时间等，这些信息通过**签名算法**防止伪造，也可以使用加密算法进一步提高安全性</code></p>
+<ul>
+<li><p>用户使用用户名密码登录，服务器验证通过后，根据用户名（或用户 id 等），按照预先设置的算法生成 token，其中也可以封装其它信息，并将 </p>
+<p>token 返回给客户端（可以设置到客户端的 cookie 中，也可以作为 response body）</p>
+</li>
+<li><p>客户端接收到 token，并在之后发送请求时带上它（利用 cookie、作为请求头或作为参数均可）</p>
+</li>
+<li><p>服务器对 token 进行解密、验证</p>
+</li>
+</ul>
+<p>token的==优势==：</p>
+<ul>
+<li><strong>不需要服务器进行存储！！！！</strong></li>
+</ul>
+<blockquote>
+<h2 id="客户端存储方案-（cookie、localStorage、sessionStorage）"><a href="#客户端存储方案-（cookie、localStorage、sessionStorage）" class="headerlink" title="客户端存储方案 （cookie、localStorage、sessionStorage）"></a>客户端存储方案 （cookie、localStorage、sessionStorage）</h2></blockquote>
+<p><img src="https://raw.githubusercontent.com/hellolvweibin/Typora/main/%E6%88%AA%E5%B1%8F2022-02-28%20%E4%B8%8B%E5%8D%888.19.02.png" alt="截屏2022-02-28 下午8.19.02"></p>
+<p><code>JSESSIONID</code> ，即 sessionId 在 tomcat 中的叫法</p>
+<h4 id="2022-03-01"><a href="#2022-03-01" class="headerlink" title="2022.03.01"></a>2022.03.01</h4><img src="https://raw.githubusercontent.com/hellolvweibin/Typora/main/%E6%88%AA%E5%B1%8F2022-03-01%20%E4%B8%8A%E5%8D%8810.49.49.png" alt="截屏2022-03-01 上午10.49.49" style="zoom:50%;" />
+
+<ul>
+<li>store是写在<code>man.js</code>里面的</li>
+</ul>
+<blockquote>
+<p>注意：拦截器的作用都是需要由后端来进行处理，对于前端容易伪造数据绕过拦截，容易造成安全问题 </p>
+</blockquote>
+<ul>
+<li>Shrio提供rememberMe功能</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*开启记住我功能*/</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> CookieRememberMeManager <span class="title">rememberMeManager</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    CookieRememberMeManager cookieRememberMeManager = <span class="keyword">new</span> CookieRememberMeManager();</span><br><span class="line">    cookieRememberMeManager.setCookie(rememberMeCookie());</span><br><span class="line">    cookieRememberMeManager.setCipherKey(<span class="string">&quot;EVANNIGHTLY_WAOU&quot;</span>.getBytes());</span><br><span class="line">    <span class="keyword">return</span> cookieRememberMeManager;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Bean</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> SimpleCookie <span class="title">rememberMeCookie</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    SimpleCookie simpleCookie = <span class="keyword">new</span> SimpleCookie(<span class="string">&quot;rememberMe&quot;</span>);</span><br><span class="line">    simpleCookie.setMaxAge(<span class="number">259200</span>);</span><br><span class="line">    <span class="keyword">return</span> simpleCookie;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>问题：</p>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/hellolvweibin/Typora/main/%E6%88%AA%E5%B1%8F2022-03-01%20%E4%B8%8B%E5%8D%881.55.57.png" alt="截屏2022-03-01 下午1.55.57"></p>
+<p><img src="https://raw.githubusercontent.com/hellolvweibin/Typora/main/%E6%88%AA%E5%B1%8F2022-03-01%20%E4%B8%8B%E5%8D%882.24.29.png" alt="截屏2022-03-01 下午2.24.29"></p>
+<ul>
+<li>我傻逼了，我这边端口写成8080了。。。。。</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/hellolvweibin/Typora/main/%E6%88%AA%E5%B1%8F2022-03-01%20%E4%B8%8B%E5%8D%882.40.56.png" alt="截屏2022-03-01 下午2.40.56"></p>
+<p><strong>主要内容：</strong></p>
+<ul>
+<li>如何设计数据库以建立用户-角色-菜单之间的联系</li>
+<li>如何查询与处理树结构的数据</li>
+<li>Vue 如何实现动态加载路由</li>
+</ul>
+<blockquote>
+<p><strong>知识点</strong></p>
+<p>如果使用了JPA作为ORM ,</p>
+<p><strong>创建 POJO 时需要注意以下几点：</strong></p>
+<p>P.S.其实过去我们创建的 POJO 应该再具体一点，称之为 PO（persistant object，持久对象）或者 Entity（实体），并使用 <strong>DTO（Data Transfer Object）</strong>与客户端进行交互。教程做了一些简化，源码添加了这些分类。</p>
+<ul>
+<li>windows 下默认不区分 mysql 字段大小写，而 linux 区分，所以数据库字段不推荐大小写混用（最好都小写），而 Java 属性一般采用小驼峰法命名，JPA 会自动将小驼峰命名转换为下划线命名，比如 nameZh 自动转换为 name_zh</li>
+<li>数据库中不存在对应字段的属性，需要用 <code>@Transient </code>注记标注出来</li>
+</ul>
+</blockquote>
+<h5 id="菜单查询接口（树结构查询）"><a href="#菜单查询接口（树结构查询）" class="headerlink" title="菜单查询接口（树结构查询）"></a>菜单查询接口（树结构查询）</h5><p>根据用户查询出对应菜单的步骤是：</p>
+<ul>
+<li>利用 shiro 获取当前登录用户的 id</li>
+<li>根据用户 id 查询出该用户对应所有角色的 id</li>
+<li>根据这些角色的 id，查询出所有可访问的菜单项</li>
+<li>根据 parentId 把子菜单放进父菜单对象中，整理返回有正确层级关系的菜单数据</li>
+</ul>
+<blockquote>
+<p>根据登录用户的id判断其角色，根据角色来判断可以访问的菜单项，根据父id把菜单放入父菜单中即可</p>
+</blockquote>
+<blockquote>
+<p>报错</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name <span class="string">&#x27;menuController&#x27;</span>: Unsatisfied dependency expressed through field <span class="string">&#x27;adminMenuService&#x27;</span>; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name <span class="string">&#x27;adminMenuService&#x27;</span>: Unsatisfied dependency expressed through field <span class="string">&#x27;adminRoleMenuService&#x27;</span>; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name <span class="string">&#x27;adminRoleMenuService&#x27;</span>: Unsatisfied dependency expressed through field <span class="string">&#x27;adminRoleMenuDao&#x27;</span>; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name <span class="string">&#x27;adminRoleMenuDao&#x27;</span> defined in com.lv.dao.AdminRoleMenuDao defined in <span class="meta">@EnableJpaRepositories</span> declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Invocation of init method failed; nested exception is org.springframework.data.repository.query.QueryCreationException: Could not create query <span class="keyword">for</span> <span class="keyword">public</span> <span class="keyword">abstract</span> java.util.List com.lv.dao.AdminRoleMenuDao.findAllByRid(java.util.List)! Reason: Failed to create query <span class="keyword">for</span> method <span class="keyword">public</span> <span class="keyword">abstract</span> java.util.List com.lv.dao.AdminRoleMenuDao.findAllByRid(java.util.List)! Operator SIMPLE_PROPERTY on rid <span class="keyword">requires</span> a scalar argument, found <span class="class"><span class="keyword">interface</span> <span class="title">java</span>.<span class="title">util</span>.<span class="title">List</span> <span class="title">in</span> <span class="title">method</span> <span class="title">public</span> <span class="title">abstract</span> <span class="title">java</span>.<span class="title">util</span>.<span class="title">List</span> <span class="title">com</span>.<span class="title">lv</span>.<span class="title">dao</span>.<span class="title">AdminRoleMenuDao</span>.<span class="title">findAllByRid</span>(<span class="title">java</span>.<span class="title">util</span>.<span class="title">List</span>).</span>; nested exception is java.lang.IllegalArgumentException: Failed to create query <span class="keyword">for</span> method <span class="keyword">public</span> <span class="keyword">abstract</span> java.util.List com.lv.dao.AdminRoleMenuDao.findAllByRid(java.util.List)! Operator SIMPLE_PROPERTY on rid <span class="keyword">requires</span> a scalar argument, found <span class="class"><span class="keyword">interface</span> <span class="title">java</span>.<span class="title">util</span>.<span class="title">List</span> <span class="title">in</span> <span class="title">method</span> <span class="title">public</span> <span class="title">abstract</span> <span class="title">java</span>.<span class="title">util</span>.<span class="title">List</span> <span class="title">com</span>.<span class="title">lv</span>.<span class="title">dao</span>.<span class="title">AdminRoleMenuDao</span>.<span class="title">findAllByRid</span>(<span class="title">java</span>.<span class="title">util</span>.<span class="title">List</span>).</span></span><br><span class="line"><span class="class"></span></span><br></pre></td></tr></table></figure>
+
+
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/hellolvweibin/Typora/main/%E6%88%AA%E5%B1%8F2022-03-01%20%E4%B8%8B%E5%8D%886.14.54.png" alt="截屏2022-03-01 下午6.14.54"></p>
+<ul>
+<li>我用上面的方式debug就能跑起来</li>
+</ul>
+<blockquote>
+<p>访问<a target="_blank" rel="noopener" href="http://localhost:8443/%E6%8A%A5%E9%94%99">http://localhost:8443/报错</a></p>
+<p>org.apache.shiro.crypto.CryptoException: Unable to execute ‘doFinal’ with cipher instance [javax.crypto.Cipher@6d9a837e].</p>
+<ul>
+<li>出现此问题是因为在shiro应用做了记住我功能，而这个功能在服务端通过cookie存储账号信息时，会对账号信息进行Base64加密，在加密时会创建一把密钥在服务端重启时会丢失，当我们再次通过浏览器访问服务时，因为客户端存储账号信息的cookie还是有效的，所以浏览器依旧会携带cookie到服务端，但是服务端解密cookie信息的密钥丢失，所以不能完成解密操作，就会出现如上异常。</li>
+</ul>
+</blockquote>
+<p>先放着吧，我先去弄前端了。。。。</p>
+<h4 id="2022-03-02"><a href="#2022-03-02" class="headerlink" title="2022.03.02"></a>2022.03.02</h4><blockquote>
+<p>报错</p>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/hellolvweibin/Typora/main/%E6%88%AA%E5%B1%8F2022-03-02%20%E4%B8%8A%E5%8D%8810.00.02.png" alt="截屏2022-03-02 上午10.00.02"></p>
+<blockquote>
+<h2 id="编写基于-URL-的过滤器"><a href="#编写基于-URL-的过滤器" class="headerlink" title="编写基于 URL 的过滤器"></a>编写基于 URL 的过滤器</h2></blockquote>
+<p>PathMatchingFilter 是 Shiro 提供的路径过滤器:</p>
+<ul>
+<li>首先，判断当前会话对应的用户是否登录，如果未登录直接 false</li>
+<li>第二步，判断访问的接口是否有对应的权限，如果没有视为不需要权限即可访问，直接 true</li>
+<li>如果需要权限，查询出当前用户对应的所有权限，遍历并与需要访问的接口进行比对，如果存在相应权限则 true，否则 false</li>
+</ul>
+<p>在 Shiro 的配置文件中，我们不能把 <code>URLPathMatchingFilter</code> 用 <code>@Bean</code> 被 Spring 管理起来。 原因是 Shiro 存在 bug, 这个也是过滤器，ShiroFilterFactoryBean 也是过滤器，当他们都出现的时候，默认的什么 anno,authc 过滤器就失效了。所以不能把他声明为 @Bean。</p>
+<p>因此，我们无法在 URLPathMatchingFilter 中使用 @Autowired 注入 AdminPermissionService 类，所以需要借助一个工具类利用 Spring 应用上下文获取 AdminPermissionService 的实例。</p>
+<blockquote>
+<p>问题： 这里傻逼了，范型写成了AdminRolePermission</p>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/hellolvweibin/Typora/main/%E6%88%AA%E5%B1%8F2022-03-02%20%E4%B8%8B%E5%8D%882.31.14.png" alt="截屏2022-03-02 下午2.31.14"></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Description:</span><br><span class="line"></span><br><span class="line">The dependencies of some of the beans in the application context form a cycle:</span><br><span class="line"></span><br><span class="line">   shiroFilter defined in <span class="class"><span class="keyword">class</span> <span class="title">path</span> <span class="title">resource</span> [<span class="title">com</span>/<span class="title">lv</span>/<span class="title">config</span>/<span class="title">ShiroConfiguration</span>.<span class="title">class</span>]</span></span><br><span class="line"><span class="class">      ↓</span></span><br><span class="line"><span class="class">   <span class="title">authorizationAttributeSourceAdvisor</span> <span class="title">defined</span> <span class="title">in</span> <span class="title">class</span> <span class="title">path</span> <span class="title">resource</span> [<span class="title">com</span>/<span class="title">lv</span>/<span class="title">config</span>/<span class="title">ShiroConfiguration</span>.<span class="title">class</span>]</span></span><br><span class="line"><span class="class">      ↓</span></span><br><span class="line"><span class="class">   <span class="title">securityManager</span> <span class="title">defined</span> <span class="title">in</span> <span class="title">class</span> <span class="title">path</span> <span class="title">resource</span> [<span class="title">com</span>/<span class="title">lv</span>/<span class="title">config</span>/<span class="title">ShiroConfiguration</span>.<span class="title">class</span>]</span></span><br><span class="line"><span class="class">      ↓</span></span><br><span class="line"><span class="class">   <span class="title">getWJRealm</span> (<span class="title">field</span> <span class="title">private</span> <span class="title">com</span>.<span class="title">lv</span>.<span class="title">service</span>.<span class="title">UserService</span> <span class="title">com</span>.<span class="title">lv</span>.<span class="title">realm</span>.<span class="title">WJRealm</span>.<span class="title">userService</span>)</span></span><br><span class="line"><span class="class">┌─────┐</span></span><br><span class="line"><span class="class">|  <span class="title">userService</span> (<span class="title">field</span> <span class="title">com</span>.<span class="title">lv</span>.<span class="title">service</span>.<span class="title">AdminRoleService</span> <span class="title">com</span>.<span class="title">lv</span>.<span class="title">service</span>.<span class="title">UserService</span>.<span class="title">adminRoleService</span>)</span></span><br><span class="line"><span class="class">↑     ↓</span></span><br><span class="line"><span class="class">|  <span class="title">adminRoleService</span> (<span class="title">field</span> <span class="title">com</span>.<span class="title">lv</span>.<span class="title">service</span>.<span class="title">UserService</span> <span class="title">com</span>.<span class="title">lv</span>.<span class="title">service</span>.<span class="title">AdminRoleService</span>.<span class="title">userService</span>)</span></span><br><span class="line"><span class="class">└─────┘</span></span><br><span class="line"><span class="class"></span></span><br><span class="line"><span class="class"></span></span><br><span class="line"><span class="class"><span class="title">Action</span>:</span></span><br><span class="line"><span class="class"></span></span><br><span class="line"><span class="class"><span class="title">Relying</span> <span class="title">upon</span> <span class="title">circular</span> <span class="title">references</span> <span class="title">is</span> <span class="title">discouraged</span> <span class="title">and</span> <span class="title">they</span> <span class="title">are</span> <span class="title">prohibited</span> <span class="title">by</span> <span class="title">default</span>. <span class="title">Update</span> <span class="title">your</span> <span class="title">application</span> <span class="title">to</span> <span class="title">remove</span> <span class="title">the</span> <span class="title">dependency</span> <span class="title">cycle</span> <span class="title">between</span> <span class="title">beans</span>. <span class="title">As</span> <span class="title">a</span> <span class="title">last</span> <span class="title">resort</span>, <span class="title">it</span> <span class="title">may</span> <span class="title">be</span> <span class="title">possible</span> <span class="title">to</span> <span class="title">break</span> <span class="title">the</span> <span class="title">cycle</span> <span class="title">automatically</span> <span class="title">by</span> <span class="title">setting</span> <span class="title">spring</span>.<span class="title">main</span>.<span class="title">allow</span>-<span class="title">circular</span>-<span class="title">references</span> <span class="title">to</span> <span class="title">true</span>.</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">spring.main.allow-circular-references=<span class="keyword">true</span>  <span class="comment">//解决</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<blockquote>
+<p><strong>报错</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">org.springframework.beans.factory.BeanCreationException: Error creating bean with name <span class="string">&#x27;shiroFilter&#x27;</span> defined in <span class="class"><span class="keyword">class</span> <span class="title">path</span> <span class="title">resource</span> [<span class="title">com</span>/<span class="title">lv</span>/<span class="title">config</span>/<span class="title">ShiroConfiguration</span>.<span class="title">class</span>]: <span class="title">BeanPostProcessor</span> <span class="title">before</span> <span class="title">instantiation</span> <span class="title">of</span> <span class="title">bean</span> <span class="title">failed</span></span>; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name <span class="string">&#x27;authorizationAttributeSourceAdvisor&#x27;</span> defined in <span class="class"><span class="keyword">class</span> <span class="title">path</span> <span class="title">resource</span> [<span class="title">com</span>/<span class="title">lv</span>/<span class="title">config</span>/<span class="title">ShiroConfiguration</span>.<span class="title">class</span>]: <span class="title">Unsatisfied</span> <span class="title">dependency</span> <span class="title">expressed</span> <span class="title">through</span> <span class="title">method</span> &#x27;<span class="title">authorizationAttributeSourceAdvisor</span>&#x27; <span class="title">parameter</span> 0</span>; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name <span class="string">&#x27;securityManager&#x27;</span> defined in <span class="class"><span class="keyword">class</span> <span class="title">path</span> <span class="title">resource</span> [<span class="title">com</span>/<span class="title">lv</span>/<span class="title">config</span>/<span class="title">ShiroConfiguration</span>.<span class="title">class</span>]: <span class="title">Bean</span> <span class="title">instantiation</span> <span class="title">via</span> <span class="title">factory</span> <span class="title">method</span> <span class="title">failed</span></span>; nested exception is org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.apache.shiro.mgt.SecurityManager]: Factory method <span class="string">&#x27;securityManager&#x27;</span> threw exception; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name <span class="string">&#x27;getWJRealm&#x27;</span>: Unsatisfied dependency expressed through field <span class="string">&#x27;userService&#x27;</span>; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name <span class="string">&#x27;userService&#x27;</span>: Unsatisfied dependency expressed through field <span class="string">&#x27;adminRoleService&#x27;</span>; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name <span class="string">&#x27;adminRoleService&#x27;</span>: Unsatisfied dependency expressed through field <span class="string">&#x27;adminPermissionService&#x27;</span>; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name <span class="string">&#x27;adminPermissionService&#x27;</span>: Unsatisfied dependency expressed through field <span class="string">&#x27;adminRolePermissionService&#x27;</span>; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name <span class="string">&#x27;adminRolePermissionService&#x27;</span>: Unsatisfied dependency expressed through field <span class="string">&#x27;adminRolePermissionDao&#x27;</span>; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name <span class="string">&#x27;adminRolePermissionDao&#x27;</span> defined in com.lv.dao.AdminRolePermissionDao defined in <span class="meta">@EnableJpaRepositories</span> declared on JpaRepositoriesRegistrar.EnableJpaRepositoriesConfiguration: Invocation of init method failed; nested exception is org.springframework.data.repository.query.QueryCreationException: Could not create query <span class="keyword">for</span> <span class="keyword">public</span> <span class="keyword">abstract</span> java.util.List com.lv.dao.AdminRolePermissionDao.findAllByRid(java.util.List)! Reason: Failed to create query <span class="keyword">for</span> method <span class="keyword">public</span> <span class="keyword">abstract</span> java.util.List com.lv.dao.AdminRolePermissionDao.findAllByRid(java.util.List)! Operator SIMPLE_PROPERTY on rid <span class="keyword">requires</span> a scalar argument, found <span class="class"><span class="keyword">interface</span> <span class="title">java</span>.<span class="title">util</span>.<span class="title">List</span> <span class="title">in</span> <span class="title">method</span> <span class="title">public</span> <span class="title">abstract</span> <span class="title">java</span>.<span class="title">util</span>.<span class="title">List</span> <span class="title">com</span>.<span class="title">lv</span>.<span class="title">dao</span>.<span class="title">AdminRolePermissionDao</span>.<span class="title">findAllByRid</span>(<span class="title">java</span>.<span class="title">util</span>.<span class="title">List</span>).</span>; nested exception is java.lang.IllegalArgumentException: Failed to create query <span class="keyword">for</span> method <span class="keyword">public</span> <span class="keyword">abstract</span> java.util.List com.lv.dao.AdminRolePermissionDao.findAllByRid(java.util.List)! Operator SIMPLE_PROPERTY on rid <span class="keyword">requires</span> a scalar argument, found <span class="class"><span class="keyword">interface</span> <span class="title">java</span>.<span class="title">util</span>.<span class="title">List</span> <span class="title">in</span> <span class="title">method</span> <span class="title">public</span> <span class="title">abstract</span> <span class="title">java</span>.<span class="title">util</span>.<span class="title">List</span> <span class="title">com</span>.<span class="title">lv</span>.<span class="title">dao</span>.<span class="title">AdminRolePermissionDao</span>.<span class="title">findAllByRid</span>(<span class="title">java</span>.<span class="title">util</span>.<span class="title">List</span>).</span></span><br><span class="line"><span class="class"></span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>是因为ShiroConfiguration里面的顺序不对</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/hellolvweibin/Typora/main/%E6%88%AA%E5%B1%8F2022-03-02%20%E4%B8%8B%E5%8D%884.33.41.png" alt="截屏2022-03-02 下午4.33.41"></p>
+</blockquote>
+<p>终于能跑起来了。。。。</p>
+<p><img src="https://raw.githubusercontent.com/hellolvweibin/Typora/main/%E6%88%AA%E5%B1%8F2022-03-02%20%E4%B8%8B%E5%8D%884.34.39.png" alt="截屏2022-03-02 下午4.34.39"></p>
+<blockquote>
+<h3 id="出现Node-Sass-version-7-0-0-is-incompatible-with-4-0-0错误解决方法"><a href="#出现Node-Sass-version-7-0-0-is-incompatible-with-4-0-0错误解决方法" class="headerlink" title="出现Node Sass version 7.0.0 is incompatible with 4.0.0错误解决方法"></a>出现<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=Node&spm=1001.2101.3001.7020">Node</a> Sass version 7.0.0 is incompatible with 4.0.0错误解决方法</h3></blockquote>
+<ol>
+<li><code>npm uninstall node-sass</code></li>
+<li><code>npm i -D sass</code><br>只需要这两步就可以解决了，重新启动项目</li>
+</ol>
+<h4 id="2022-03-03"><a href="#2022-03-03" class="headerlink" title="2022.03.03"></a>2022.03.03</h4><blockquote>
+<ul>
+<li>问题：</li>
+</ul>
+<p>Error: No PostCSS Config found in: /Users/levi_bee/Desktop/Levi的学习之路/White-Jotter-Lv/V-vue/node_modules/mavon-editor/dist/css</p>
+</blockquote>
+<ul>
+<li>解决方法</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/hellolvweibin/Typora/main/%E6%88%AA%E5%B1%8F2022-03-03%20%E4%B8%8A%E5%8D%8810.28.32.png" alt="截屏2022-03-03 上午10.28.32"></p>
+<p><img src="https://raw.githubusercontent.com/hellolvweibin/Typora/main/%E6%88%AA%E5%B1%8F2022-03-03%20%E4%B8%8A%E5%8D%8810.28.50.png" alt="截屏2022-03-03 上午10.28.50"></p>
+<p>！！！！！！！！！！！！！！！！！！！！！！！！！</p>
+<p><img src="https://raw.githubusercontent.com/hellolvweibin/Typora/main/%E6%88%AA%E5%B1%8F2022-03-03%20%E4%B8%8A%E5%8D%8810.29.29.png" alt="截屏2022-03-03 上午10.29.29"></p>
+<blockquote>
+<p>可以说之前遇到的所有问题都是因为src/main.js没有配置好</p>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/hellolvweibin/Typora/main/%E6%88%AA%E5%B1%8F2022-03-03%20%E4%B8%8A%E5%8D%8811.04.39.png" alt="截屏2022-03-03 上午11.04.39"></p>
+<blockquote>
+<p>文章详情页面构造思路：</p>
+<ul>
+<li>第一种，在数据库中仅保存 markdown 语法的文本，在需要使用时解析为 html，并在前台渲染（弊端在于需要自己编写解析方法）</li>
+<li>第二种，markdown、html 均保存在数据库中，需要使用时取出 html 并在前台渲染</li>
+</ul>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/hellolvweibin/Typora/main/%E6%88%AA%E5%B1%8F2022-03-03%20%E4%B8%8B%E5%8D%884.27.45.png" alt="截屏2022-03-03 下午4.27.45"></p>
+<p><img src="https://raw.githubusercontent.com/hellolvweibin/Typora/main/%E6%88%AA%E5%B1%8F2022-03-03%20%E4%B8%8B%E5%8D%884.28.04.png" alt="截屏2022-03-03 下午4.28.04"></p>
+<blockquote>
+<p>前端的优化</p>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/hellolvweibin/Typora/main/%E6%88%AA%E5%B1%8F2022-03-03%20%E4%B8%8B%E5%8D%884.38.10.png" alt="截屏2022-03-03 下午4.38.10"></p>
+<p><code>总结：减少请求数量，降低请求大小</code></p>
+<blockquote>
+<p>后端的优化</p>
+</blockquote>
+<p><img src="https://raw.githubusercontent.com/hellolvweibin/Typora/main/%E6%88%AA%E5%B1%8F2022-03-03%20%E4%B8%8B%E5%8D%884.39.07.png" alt="截屏2022-03-03 下午4.39.07"></p>
+<p><img src="https://raw.githubusercontent.com/hellolvweibin/Typora/main/%E6%88%AA%E5%B1%8F2022-03-03%20%E4%B8%8B%E5%8D%884.50.15.png" alt="截屏2022-03-03 下午4.50.15"></p>
+<h4 id="2022-03-04"><a href="#2022-03-04" class="headerlink" title="2022.03.04"></a>2022.03.04</h4><p><img src="https://raw.githubusercontent.com/hellolvweibin/Typora/main/%E6%88%AA%E5%B1%8F2022-03-04%20%E4%B8%8A%E5%8D%8810.42.04.png" alt="截屏2022-03-04 上午10.42.04"></p>
+<blockquote>
+<p>对缓存的理解：</p>
+<p><a target="_blank" rel="noopener" href="https://learner.blog.csdn.net/article/details/107028816">https://learner.blog.csdn.net/article/details/107028816</a></p>
+</blockquote>
+<ul>
+<li><strong><code>Write-Through</code></strong> ：请求更新数据，如果该数据在缓存中存在，则先更新缓存，再更新数据库。</li>
+<li>**<code>Write-Back</code>:**请求更新数据，更新缓存，至于数据库什么时候更新，不一定，有机会再更新，可以攒一波再更新，有缓存在就行。</li>
+</ul>
+<p><strong>缓存常见问题：</strong></p>
+<ul>
+<li><strong>数据一致性</strong>问题，缓存的数据与数据库由于各种原因产生差异</li>
+<li><strong>缓存穿透</strong>，明明已经用缓存了，还是有一堆请求杀到了数据库。</li>
+<li><strong>缓存雪崩</strong>，一大批缓存同时过期，一大波请求趁虚而入，如同雪崩一般。</li>
+</ul>
+<ol>
+<li><p>数据一致性问题</p>
+</li>
+<li><p>缓存穿透：</p>
+<p>引发缓存穿透的情形一般有两种，一是大量查询一个数据库里也没有的数据，这种数据正常不会被缓存，结果每次都要到数据库里兜一圈。那我们可以设置一个规则，数据库没有的数据我们也缓存起来，值设置成空就行了。</p>
+<p>另一种情形是，数据库里有这个数据，之前从没人查询过，但突然有那么一瞬间来了一大波请求，缓存根本来不及反应，压力就全都到了数据库上。这种怎么办？两种办法，一是<code>限流</code>，二是<code>预判</code>。</p>
+<p>在请求排山倒海般到来之前，先把它填充到缓存里就完事儿了。（这种做法通常称为<strong>缓存预热</strong>）</p>
+</li>
+<li><p><strong>缓存雪崩：</strong></p>
+<p>其实本质上雪崩和穿透是一类问题，只是出现的阶段不一样，穿透是缓存已经稳定建立起来了，雪崩是缓存突然同时过期了。当然还有一种情况，就是完全还没有缓存的时候，一大波请求涌入。比如缓存没做持久化，结果机房断电了，重启之后就是没有缓存的。<strong>解决方法：</strong>仍然是<code>限流</code>和<code>缓存预热</code></p>
+</li>
+</ol>
+<blockquote>
+<p>问题</p>
+</blockquote>
+<p>![截屏2022-03-04 下午1.58.38](White-Jotter-Lv.assets/截屏2022-03-04 下午1.58.38.png)</p>
+<ul>
+<li>如果我在main.js中改成add.Route()则会报错，导航栏会消失</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/hellolvweibin/Typora/main/%E6%88%AA%E5%B1%8F2022-03-04%20%E4%B8%8B%E5%8D%882.00.27.png" alt="截屏2022-03-04 下午2.00.27"></p>
+<blockquote>
+<p>ResrController和Controller的区别：</p>
+<p>返回json需要@ResponseBody和@Controller配合。</p>
+<ul>
+<li>即@RestController是@ResponseBody和@Controller的组合注解。</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>报错：</p>
+<p><strong>java.sql.SQLSyntaxErrorException: Unknown column ‘adminpermi0_.desc_’ in ‘field list’</strong></p>
+</blockquote>
+<blockquote>
+<p>我的改进：<strong>获取登录用户名显示在页面右上角</strong></p>
+<ul>
+<li>显示当前登录用户的账户姓名</li>
+</ul>
+<p>实现方法：使用<code>js-cookies</code></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_42207453/article/details/103275454">https://blog.csdn.net/qq_42207453/article/details/103275454</a></p>
+</blockquote>
+<h4 id="2022-03-05"><a href="#2022-03-05" class="headerlink" title="2022.03.05"></a>2022.03.05</h4><p>还有蛮多bug没有解决：</p>
+<ul>
+<li>搜索框失效</li>
+</ul>
+<blockquote>
+<p>失效的原因在于controller返回的是一个Result,并不是图书</p>
+<ul>
+<li>原来的代码</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@GetMapping(&quot;/api/search&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Result <span class="title">searchResult</span><span class="params">(<span class="meta">@RequestParam(&quot;keywords&quot;)</span> String keywords)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (<span class="string">&quot;&quot;</span>.equals(keywords)) &#123;</span><br><span class="line">        <span class="keyword">return</span> ResultFactory.buildSuccessResult(bookService.list());</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> ResultFactory.buildSuccessResult(bookService.Search(keywords));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>修改后的代码</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@CrossOrigin</span></span><br><span class="line"><span class="meta">@GetMapping(&quot;/api/search&quot;)</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> List&lt;Book&gt; <span class="title">searchResult</span><span class="params">(<span class="meta">@RequestParam(&quot;keywords&quot;)</span> String keywords)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 关键词为空时查询出所有书籍</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="string">&quot;&quot;</span>.equals(keywords)) &#123;</span><br><span class="line">        <span class="keyword">return</span> bookService.list();</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> bookService.Search(keywords);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<img src="White-Jotter-Lv.assets/截屏2022-03-06 下午3.29.01.png" alt="截屏2022-03-06 下午3.29.01" style="zoom:50%;" />
+
+<img src="White-Jotter-Lv.assets/截屏2022-03-06 下午3.30.18.png" alt="截屏2022-03-06 下午3.30.18" style="zoom:50%;" />
+
+<p>成功查到书籍</p>
+</blockquote>
+<ul>
+<li>角色管理无法使用，点击会跳转到登录页面</li>
+</ul>
+<blockquote>
+<p>角色管理的问题主要出在：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="http://localhost:8088/admin/user/role">http://localhost:8088/admin/user/role</a></li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/hellolvweibin/Typora/main/%E6%88%AA%E5%B1%8F2022-03-08%20%E4%B8%8B%E5%8D%887.08.38.png" alt="截屏2022-03-08 下午7.08.38"></p>
+<p>这里注释掉的对于/api/admin/**进行拦截，而对于/admin/user无法访问，我把这句话注释掉就能访问了</p>
+<ul>
+<li>或者增加跨域配置</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="http://t.csdn.cn/yNGQp">http://t.csdn.cn/yNGQp</a></p>
+<p><img src="https://raw.githubusercontent.com/hellolvweibin/Typora/main/%E6%88%AA%E5%B1%8F2022-03-08%20%E4%B8%8B%E5%8D%888.17.36.png" alt="截屏2022-03-08 下午8.17.36"></p>
+</blockquote>
+<ul>
+<li>图书管理和博客管理无法查看数据</li>
+</ul>
+<blockquote>
+<p>图书馆里可以查看</p>
+<p><img src="https://raw.githubusercontent.com/hellolvweibin/Typora/main/%E6%88%AA%E5%B1%8F2022-03-07%20%E4%B8%8B%E5%8D%8812.07.58.png" alt="截屏2022-03-07 下午12.07.58"></p>
+</blockquote>
+<ul>
+<li>用户信息无法查看【已解决！】</li>
+</ul>
+<blockquote>
+<p>报错信息：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">java.sql.SQLSyntaxErrorException: Unknown column <span class="string">&#x27;adminpermi0_.desc&#x27;</span> in <span class="string">&#x27;field list&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>我去实体类一看，发现绑定的表出错了，admin_permission写成了<strong>admin_role_permission</strong>，操，粗心大意了！！！</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/hellolvweibin/Typora/main/%E6%88%AA%E5%B1%8F2022-03-05%20%E4%B8%8B%E5%8D%883.08.41.png" alt="截屏2022-03-05 下午3.08.41"></p>
+</blockquote>
+<ul>
+<li>报错信息：</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/hellolvweibin/Typora/main/%E6%88%AA%E5%B1%8F2022-03-05%20%E4%B8%8B%E5%8D%883.37.54.png" alt="截屏2022-03-05 下午3.37.54"></p>
+<h4 id="2022-03-06"><a href="#2022-03-06" class="headerlink" title="2022.03.06"></a>2022.03.06</h4><h5 id="前后端分离项目中的跨域问题"><a href="#前后端分离项目中的跨域问题" class="headerlink" title="前后端分离项目中的跨域问题"></a>前后端分离项目中的跨域问题</h5><blockquote>
+<p>非常有可能是版本问题</p>
+<p>解决办法：</p>
+<ul>
+<li><p>在controller中增加<code>@CrossOrigin</code></p>
+</li>
+<li><p>降版本</p>
+</li>
+<li><p>添加CorsConfig配置</p>
+</li>
+</ul>
+<p>参考文章：</p>
+<p><a target="_blank" rel="noopener" href="http://t.csdn.cn/yNGQp">http://t.csdn.cn/yNGQp</a> </p>
+</blockquote>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Levi_Bee</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2022/05/18/%E4%B8%AA%E4%BA%BA%E9%A1%B9%E7%9B%AE/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB/White-Jotter-Lv/">http://example.com/2022/05/18/个人项目/前后端分离/White-Jotter-Lv/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">Levi_Bee's World!</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Vue/">Vue</a><a class="post-meta__tags" href="/tags/SpringBoot/">SpringBoot</a><a class="post-meta__tags" href="/tags/JPA/">JPA</a><a class="post-meta__tags" href="/tags/ElementUI/">ElementUI</a><a class="post-meta__tags" href="/tags/MySQL/">MySQL</a><a class="post-meta__tags" href="/tags/Shiro/">Shiro</a></div><div class="post_share"><div class="social-share" data-image="https://raw.githubusercontent.com/hellolvweibin/Typora/main/image-20220518153233950.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/05/18/Spring/SpringMVC%20%E5%AD%A6%E4%B9%A0/"><img class="prev-cover" src="https://raw.githubusercontent.com/hellolvweibin/Typora/main/images.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">SpringMVC</div></div></a></div><div class="next-post pull-right"><a href="/2022/05/17/%E5%89%8D%E7%AB%AF/Vue/"><img class="next-cover" src="https://raw.githubusercontent.com/hellolvweibin/Typora/main/vue.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Vue</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/05/17/%E5%89%8D%E7%AB%AF/Vue/" title="Vue"><img class="cover" src="https://raw.githubusercontent.com/hellolvweibin/Typora/main/vue.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-05-17</div><div class="title">Vue</div></div></a></div><div><a href="/2022/05/17/%E6%8C%81%E4%B9%85%E5%B1%82/MyBatis/" title="Mybatis"><img class="cover" src="https://raw.githubusercontent.com/hellolvweibin/Typora/main/%E4%B8%8B%E8%BD%BD.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-05-17</div><div class="title">Mybatis</div></div></a></div><div><a href="/2022/05/17/Spring/SpringBoot%E5%AD%A6%E4%B9%A0/" title="SpringBoot"><img class="cover" src="https://pic1.zhimg.com/v2-5aed21c8ef45942df927ee57dca6c1e7_1440w.jpg?source=172ae18b" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-05-17</div><div class="title">SpringBoot</div></div></a></div><div><a href="/2022/05/17/Spring/Swagger/" title="Swagger"><img class="cover" src="https://raw.githubusercontent.com/hellolvweibin/Typora/main/image-20220517194333470.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-05-17</div><div class="title">Swagger</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://raw.githubusercontent.com/hellolvweibin/Typora/main/IMG_5475.JPG" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Levi_Bee</div><div class="author-info__description">代码🧑🏻‍💻｜烹饪🥙｜运动🏀｜养🐰🐰</div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">9</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">标签</div><div class="length-num">16</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">分类</div><div class="length-num">7</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/hellolvweibin"><i class="fab fa-github"></i><span>About Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/hellolvweibin" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:279369954@qq.com" target="_blank" title="Email"><i class="fas fa-envelope-open-text"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>公告</span></div><div class="announcement_content">世界很美，抬头看看!</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91%E6%B5%81%E7%A8%8B"><span class="toc-number">1.</span> <span class="toc-text">项目开发流程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2022-02-23"><span class="toc-number">1.0.0.1.</span> <span class="toc-text">2022.02.23</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2022-02-24"><span class="toc-number">1.0.0.2.</span> <span class="toc-text">2022.02.24</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2022-02-25"><span class="toc-number">1.0.0.3.</span> <span class="toc-text">2022.02.25</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2022-02-26"><span class="toc-number">1.0.0.4.</span> <span class="toc-text">2022.02.26</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2022-02-27"><span class="toc-number">1.0.0.5.</span> <span class="toc-text">2022.02.27</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0"><span class="toc-number">1.0.0.5.1.</span> <span class="toc-text">图片上传</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2022-02-28"><span class="toc-number">1.0.0.6.</span> <span class="toc-text">2022.02.28</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Shiro-%E6%A0%B8%E5%BF%83%E6%A6%82%E5%BF%B5"><span class="toc-number">1.0.0.6.1.</span> <span class="toc-text">Shiro 核心概念</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Session%E5%92%8CToken"><span class="toc-number">1.0.0.6.2.</span> <span class="toc-text">Session和Token</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Session"><span class="toc-number">1.1.</span> <span class="toc-text">Session</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Token-%E4%BB%A4%E7%89%8C"><span class="toc-number">1.1.1.</span> <span class="toc-text">Token (令牌)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%AD%98%E5%82%A8%E6%96%B9%E6%A1%88-%EF%BC%88cookie%E3%80%81localStorage%E3%80%81sessionStorage%EF%BC%89"><span class="toc-number">1.2.</span> <span class="toc-text">客户端存储方案 （cookie、localStorage、sessionStorage）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2022-03-01"><span class="toc-number">1.2.0.1.</span> <span class="toc-text">2022.03.01</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%8F%9C%E5%8D%95%E6%9F%A5%E8%AF%A2%E6%8E%A5%E5%8F%A3%EF%BC%88%E6%A0%91%E7%BB%93%E6%9E%84%E6%9F%A5%E8%AF%A2%EF%BC%89"><span class="toc-number">1.2.0.1.1.</span> <span class="toc-text">菜单查询接口（树结构查询）</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2022-03-02"><span class="toc-number">1.2.0.2.</span> <span class="toc-text">2022.03.02</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BC%96%E5%86%99%E5%9F%BA%E4%BA%8E-URL-%E7%9A%84%E8%BF%87%E6%BB%A4%E5%99%A8"><span class="toc-number">1.3.</span> <span class="toc-text">编写基于 URL 的过滤器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%BA%E7%8E%B0Node-Sass-version-7-0-0-is-incompatible-with-4-0-0%E9%94%99%E8%AF%AF%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="toc-number">1.3.1.</span> <span class="toc-text">出现Node Sass version 7.0.0 is incompatible with 4.0.0错误解决方法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2022-03-03"><span class="toc-number">1.3.1.1.</span> <span class="toc-text">2022.03.03</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2022-03-04"><span class="toc-number">1.3.1.2.</span> <span class="toc-text">2022.03.04</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2022-03-05"><span class="toc-number">1.3.1.3.</span> <span class="toc-text">2022.03.05</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2022-03-06"><span class="toc-number">1.3.1.4.</span> <span class="toc-text">2022.03.06</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98"><span class="toc-number">1.3.1.4.1.</span> <span class="toc-text">前后端分离项目中的跨域问题</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/05/18/Java/JavaWeb%E5%AD%A6%E4%B9%A0/" title="SpringMVC"><img src="https://raw.githubusercontent.com/hellolvweibin/Typora/main/images.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="SpringMVC"/></a><div class="content"><a class="title" href="/2022/05/18/Java/JavaWeb%E5%AD%A6%E4%B9%A0/" title="SpringMVC">SpringMVC</a><time datetime="2022-05-18T12:16:39.000Z" title="发表于 2022-05-18 20:16:39">2022-05-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/05/18/Spring/SpringMVC%20%E5%AD%A6%E4%B9%A0/" title="SpringMVC"><img src="https://raw.githubusercontent.com/hellolvweibin/Typora/main/images.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="SpringMVC"/></a><div class="content"><a class="title" href="/2022/05/18/Spring/SpringMVC%20%E5%AD%A6%E4%B9%A0/" title="SpringMVC">SpringMVC</a><time datetime="2022-05-18T12:16:39.000Z" title="发表于 2022-05-18 20:16:39">2022-05-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/05/18/%E4%B8%AA%E4%BA%BA%E9%A1%B9%E7%9B%AE/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB/White-Jotter-Lv/" title="个人项目--WhiteJotter-Lv(基于SpringBoot+Vue实现的前后端分离项目)"><img src="https://raw.githubusercontent.com/hellolvweibin/Typora/main/image-20220518153233950.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="个人项目--WhiteJotter-Lv(基于SpringBoot+Vue实现的前后端分离项目)"/></a><div class="content"><a class="title" href="/2022/05/18/%E4%B8%AA%E4%BA%BA%E9%A1%B9%E7%9B%AE/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%88%86%E7%A6%BB/White-Jotter-Lv/" title="个人项目--WhiteJotter-Lv(基于SpringBoot+Vue实现的前后端分离项目)">个人项目--WhiteJotter-Lv(基于SpringBoot+Vue实现的前后端分离项目)</a><time datetime="2022-05-18T12:16:39.000Z" title="发表于 2022-05-18 20:16:39">2022-05-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/05/17/%E5%89%8D%E7%AB%AF/Vue/" title="Vue"><img src="https://raw.githubusercontent.com/hellolvweibin/Typora/main/vue.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Vue"/></a><div class="content"><a class="title" href="/2022/05/17/%E5%89%8D%E7%AB%AF/Vue/" title="Vue">Vue</a><time datetime="2022-05-17T12:00:00.000Z" title="发表于 2022-05-17 20:00:00">2022-05-17</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/05/17/%E6%8C%81%E4%B9%85%E5%B1%82/MyBatis/" title="Mybatis"><img src="https://raw.githubusercontent.com/hellolvweibin/Typora/main/%E4%B8%8B%E8%BD%BD.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Mybatis"/></a><div class="content"><a class="title" href="/2022/05/17/%E6%8C%81%E4%B9%85%E5%B1%82/MyBatis/" title="Mybatis">Mybatis</a><time datetime="2022-05-17T12:00:00.000Z" title="发表于 2022-05-17 20:00:00">2022-05-17</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://raw.githubusercontent.com/hellolvweibin/Typora/main/image-20220518153233950.png')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By Levi_Bee</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><div class="js-pjax"></div><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-fluttering-ribbon.min.js"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
